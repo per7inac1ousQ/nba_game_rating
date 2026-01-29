@@ -18,8 +18,8 @@ mcp = FastMCP(
 )
 
 
-@mcp.command("get_game_stats", "Get stats for a specific NBA game by game ID.")
-def get_game_stats(game_id: str) -> dict:
+@mcp.tool("get_game_stats", "Get stats for a specific NBA game by game ID.")
+async def get_game_stats(game_id: str) -> dict:
     logger.info(f"Fetching stats for game ID: {game_id}")
     # Simulate fetching game stats
     game_stats = {
@@ -38,3 +38,21 @@ def get_game_stats(game_id: str) -> dict:
         ]
     }
     return game_stats
+
+
+@mcp.tool("get_player_stats", "Get stats for a specific NBA player by player ID.")
+async def get_player_stats(player_id: str) -> dict:
+    logger.info(f"Fetching stats for player ID: {player_id}")
+    # Simulate fetching player stats
+    player_stats = {
+        "player_id": player_id,
+        "name": "LeBron James",
+        "position": "Forward",
+        "team": "Los Angeles Lakers",
+        "stats": {
+            "points_per_game": random.randint(15, 35),
+            "assists_per_game": random.randint(5, 15),
+            "rebounds_per_game": random.randint(8, 18)
+        }
+    }
+    return player_stats
